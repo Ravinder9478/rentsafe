@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import all color variables */
+@import './variables.css';
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #E8E2FF4D;
+  background: linear-gradient(241deg, rgba(232, 226, 255, 1) 0%, rgba(255, 255, 255, 1) 44%, rgba(249, 249, 252, 0) 100%);
+  color: var(--color-text-primary);
+}
+
+/* Quicksand font for all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+/* Primary gradient utility */
+@layer utilities {
+  .bg-primary-gradient {
+    background: #4A2FCC;
+    background: linear-gradient(241deg, rgba(74, 47, 204, 1) 0%, rgba(107, 78, 255, 1) 53%);
+  }
+  
+  .bg-bg-primary {
+    background: #E8E2FF4D;
+    background: linear-gradient(241deg, rgba(232, 226, 255, 1) 0%, rgba(255, 255, 255, 1) 44%, rgba(249, 249, 252, 0) 100%);
+  }
+  
+  .bg-badge-gradient {
+    background: #E8E2FF99;
+    background: linear-gradient(241deg, #e8e2ff52 0%, #8f7af926 100%);
+  }
+  
+  /* Hide scrollbar for slider */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+#root {
+  min-height: 100vh;
+}

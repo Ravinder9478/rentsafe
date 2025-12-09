@@ -1,0 +1,38 @@
+/**
+ * CSS Variables Configuration
+ * All color variables and gradients are defined here
+ */
+
+:root {
+  /* Primary Colors */
+  --color-primary: #4A2FCC;
+  --color-primary-dark: #3a24a8;
+  --color-primary-light: #6b4eff;
+  --color-primary-gradient: linear-gradient(241deg, rgba(74, 47, 204, 1) 0%, rgba(107, 78, 255, 1) 53%);
+  
+  /* Accent Colors */
+  --color-accent: #3b82f6;
+  
+  /* Background Colors */
+  --color-bg-primary: #E8E2FF4D;
+  --color-bg-primary-gradient: linear-gradient(241deg, rgba(232, 226, 255, 1) 0%, rgba(255, 255, 255, 1) 44%, rgba(249, 249, 252, 0) 100%);
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  --color-bg-purple: #4A2FCC;
+  
+  /* Text Colors */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-light: #ffffff;
+  
+  /* Border Colors */
+  --color-border: #e5e7eb;
+  --color-border-primary: #4A2FCC;
+  --color-border-search: #7356FF;
+  
+  /* Badge Gradient */
+  --color-badge-gradient: linear-gradient(241deg, #E8E2FF99 0%, #6B4EFF1A 100%);
+  
+  /* Badge Colors */
+  --color-badge-orange: #FF6B35;
+}
