@@ -1,6 +1,6 @@
 function PageHeading({ children, className = "" }) {
   return (
-    <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary ${className}`}>
+    <h1 className={`text-xl md:text-2xl font-bold text-text-primary ${className}`}>
       {children}
     </h1>
   );

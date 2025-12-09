@@ -1,18 +1,23 @@
 import HouseIcon from '../../assets/svg/houseIcon';
 import HeartIcon from '../../assets/svg/heartIcon';
 
-function HeaderIcons() {
+function HeaderIcons({ favoriteCount = 0, onHeartClick, isSavedView = false }) {
   return (
     <div className="flex items-center gap-4 sm:gap-6">
       <button className="text-primary hover:opacity-80 transition-opacity">
         <HouseIcon />
       </button>
 
-      <button className="relative text-gray-600 hover:text-primary transition-colors">
-        <HeartIcon />
-        <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          6
-        </span>
+      <button 
+        onClick={onHeartClick}
+        className={`relative transition-colors ${isSavedView ? 'text-red-500' : 'text-gray-600 hover:text-primary'}`}
+      >
+        <HeartIcon isFilled={isSavedView} />
+        {favoriteCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {favoriteCount}
+          </span>
+        )}
       </button>
 
       <button className="relative text-primary hover:opacity-80 transition-opacity">

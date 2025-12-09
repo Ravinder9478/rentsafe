@@ -2,10 +2,10 @@ function FilterButton({ label, isSelected, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+      className={`px-4 py-2 rounded-full text-base font-medium transition-colors ${
         isSelected
-          ? 'bg-primary text-white'
-          : 'bg-gray-100 text-text-secondary hover:bg-gray-200'
+          ? 'bg-[#EAE6FF] border border-[#6649F7] text-[#6649F7]'
+          : 'text-text-secondary border border-[#E5E7EB] hover:bg-gray-100'
       }`}
     >
       {label}

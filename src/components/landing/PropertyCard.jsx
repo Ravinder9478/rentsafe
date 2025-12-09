@@ -6,10 +6,9 @@ import BathIcon from '../../assets/svg/bathIcon';
 import HouseIcon from '../../assets/svg/houseIcon';
 import LocationTwo from '../../assets/svg/locationTwo';
 
-function PropertyCard({ property }) {
+function PropertyCard({ property, isFavorited = false, onToggleFavorite }) {
     return (
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-lg transition-shadow p-4 border border-[#E6E8EC] relative">
-            {/* Image Container */}
             <div>
                 <div className="">
                     <img
@@ -33,8 +32,11 @@ function PropertyCard({ property }) {
                             <button className="text-text-secondary hover:text-primary transition-colors">
                                 <ShareIcon />
                             </button>
-                            <button className="text-text-secondary hover:text-primary transition-colors">
-                                <HeartIcon />
+                            <button 
+                                onClick={onToggleFavorite || (() => {})}
+                                className={`transition-colors ${isFavorited ? 'text-red-500' : 'text-text-secondary hover:text-primary'}`}
+                            >
+                                <HeartIcon isFilled={isFavorited} />
                             </button>
                         </div>
                     </div>

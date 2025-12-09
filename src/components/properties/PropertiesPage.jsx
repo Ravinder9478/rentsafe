@@ -8,6 +8,8 @@ import { propertyListings } from '../../constants/data/propertyListings';
 
 function PropertiesPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [favoritedIds, setFavoritedIds] = useState(new Set());
+  const [showSavedOnly, setShowSavedOnly] = useState(false);
   const [filters, setFilters] = useState({
     propertyType: 'all',
     amenities: [],
@@ -16,8 +18,26 @@ function PropertiesPage() {
     priceMax: 10000
   });
 
+  const toggleFavorite = (propertyId) => {
+    setFavoritedIds(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(propertyId)) {
+        newSet.delete(propertyId);
+      } else {
+        newSet.add(propertyId);
+      }
+      return newSet;
+    });
+  };
+
+  const favoriteCount = favoritedIds.size;
+
   const filteredProperties = useMemo(() => {
     let result = [...propertyListings];
+
+    if (showSavedOnly) {
+      result = result.filter(property => favoritedIds.has(property.id));
+    }
 
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
@@ -61,13 +81,22 @@ function PropertiesPage() {
     });
 
     return result;
-  }, [searchQuery, filters]);
+  }, [searchQuery, filters, showSavedOnly, favoritedIds]);
 
   return (
     <div className="min-h-screen bg-bg-primary">
-      <PropertiesHeader />
+      <PropertiesHeader 
+        favoriteCount={favoriteCount}
+        onHeartClick={() => setShowSavedOnly(!showSavedOnly)}
+        isSavedView={showSavedOnly}
+      />
       <div className="py-6 sm:py-8 lg:py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {showSavedOnly && (
+            <div className="mb-6 sm:mb-8">
+              <PageHeading>Saved Properties</PageHeading>
+            </div>
+          )}
           <PropertySearch
             value={searchQuery}
             onChange={setSearchQuery}
@@ -75,11 +104,18 @@ function PropertiesPage() {
           />
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-            <aside className="w-full lg:w-1/4">
-              <PropertyFilters onFilterChange={setFilters} />
-            </aside>
-            <main className="flex-1">
-              <PropertyList properties={filteredProperties} />
+            {!showSavedOnly && (
+              <aside className="w-full lg:w-1/3">
+                <PropertyFilters onFilterChange={setFilters} />
+              </aside>
+            )}
+            <main className={showSavedOnly ? "w-full" : "flex-1"}>
+              <PropertyList 
+                properties={filteredProperties} 
+                favoritedIds={favoritedIds}
+                onToggleFavorite={toggleFavorite}
+                isSavedView={showSavedOnly}
+              />
             </main>
           </div>
         </div>

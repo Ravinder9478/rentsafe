@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
-import HouseIcon from '../../assets/svg/houseIcon';
 import HeaderIcons from './HeaderIcons';
 import ProfileMenu from './ProfileMenu';
 import logo from '../../assets/img/logo.svg';
 
-function PropertiesHeader() {
+function PropertiesHeader({ favoriteCount = 0, onHeartClick, isSavedView = false }) {
   return (
     <header className="bg-white border-b border-blue-200 sticky top-0 left-0 right-0 z-50">
       <div className="container mx-auto flex items-center justify-between h-[70px] px-4 lg:px-6">
         <Link to="/" className="flex items-center gap-2">
-        <img
+          <img
             src={logo}
             alt="Rent Safe logo"
             className="h-8 w-auto object-contain"
@@ -22,7 +21,11 @@ function PropertiesHeader() {
         </div>
 
         <div className="flex items-center gap-4">
-          <HeaderIcons />
+          <HeaderIcons 
+            favoriteCount={favoriteCount}
+            onHeartClick={onHeartClick}
+            isSavedView={isSavedView}
+          />
           <ProfileMenu />
         </div>
       </div>
