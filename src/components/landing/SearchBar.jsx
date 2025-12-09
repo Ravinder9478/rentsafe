@@ -1,0 +1,41 @@
+import DropdownIcon from '../../assets/svg/dropdownIcon';
+import SearchIcon from '../../assets/svg/searchIcon';
+import LocationIcon from '../../assets/svg/locationIcon';
+
+function SearchBar() {
+  return (
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 -mt-16 md:-mt-24 lg:-mt-34 relative z-10 pb-8">
+      <div className="bg-white rounded-2xl shadow-lg border border-border-search p-4 sm:p-5 md:p-6 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+        {/* Dropdown */}
+        <div className="flex items-center justify-between gap-2 px-4 py-3 border border-border rounded-lg cursor-pointer transition-colors min-w-[160px]">
+          <span className="text-text-primary font-medium text-sm sm:text-base">Flat/Apartment</span>
+          <DropdownIcon />
+        </div>
+        <div className='h-12 w-[1px] bg-[#DFDFDF] mx-3'>
+
+        </div>
+        {/* Search Input */}
+        <div className="flex-1 relative">
+          <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-text-secondary">
+            <SearchIcon />
+          </div>
+          <input
+            type="text"
+            placeholder="Enter an address, neighborhood, city, or ZIP code"
+            className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 text-sm sm:text-base border border-border rounded-lg focus:outline-none transition-colors text-text-primary placeholder:text-text-secondary"
+          />
+          <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-text-secondary cursor-pointer">
+            <LocationIcon />
+          </div>
+        </div>
+
+        {/* Search Button */}
+        <button className="bg-primary-gradient hover:opacity-90 text-white px-6 sm:px-8 py-3 rounded-lg font-medium transition-all shadow-md hover:shadow-lg whitespace-nowrap text-sm sm:text-base">
+          Search
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default SearchBar;
